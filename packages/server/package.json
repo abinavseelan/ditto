@@ -1,0 +1,27 @@
+{
+  "name": "ditto-server",
+  "version": "0.1.0",
+  "description": "",
+  "main": "-",
+  "scripts": {
+    "start:dev": "NODE_ENV=development rollup --config --watch"
+  },
+  "author": "Abinav Seelan <abinav.n.seelan@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-inject": "^4.0.0",
+    "@rollup/plugin-json": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^6.0.0",
+    "@rollup/plugin-run": "^1.1.0",
+    "@rollup/plugin-typescript": "^2.0.1",
+    "rollup": "^1.27.9",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "typescript": "^3.7.3"
+  }
+}
