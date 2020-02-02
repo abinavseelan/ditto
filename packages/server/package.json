@@ -4,7 +4,7 @@
   "description": "",
   "main": "-",
   "scripts": {
-    "start:dev": "NODE_ENV=development rollup --config --watch"
+    "start:dev": "NODE_ENV=development webpack --config webpack.config.js --watch --progress"
   },
   "author": "Abinav Seelan <abinav.n.seelan@gmail.com>",
   "license": "GPL-3.0-or-later",
@@ -14,14 +14,11 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@rollup/plugin-inject": "^4.0.0",
-    "@rollup/plugin-json": "^4.0.0",
-    "@rollup/plugin-node-resolve": "^6.0.0",
-    "@rollup/plugin-run": "^1.1.0",
-    "@rollup/plugin-typescript": "^2.0.1",
-    "rollup": "^1.27.9",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "typescript": "^3.7.3"
+    "clean-webpack-plugin": "^3.0.0",
+    "nodemon-webpack-plugin": "^4.2.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }

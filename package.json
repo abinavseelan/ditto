@@ -19,12 +19,16 @@
   "dependencies": {
     "lerna": "^3.19.0"
   },
+  "lint-staged": {
+    ".{js,jsx,ts,tsx}": "eslint"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0",
     "husky": "^3.1.0",
+    "lint-staged": "^10.0.7",
     "pre-commit": "^1.2.2",
     "typescript": "^3.7.3"
   }
