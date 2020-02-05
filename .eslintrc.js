@@ -24,6 +24,9 @@ module.exports =  {
       }
     }
   ],
+  rules: {
+    '@typescript-eslint/camelcase': 0,
+  },
   settings:  {
     react:  {
       version:  'detect',  // Tells eslint-plugin-react to automatically detect the version of React to use

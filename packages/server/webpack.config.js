@@ -17,7 +17,12 @@ module.exports = {
 
   mode: DEV ? 'development' : 'production',
 
+  resolve: {
+    extensions: ['.js', '.ts']
+  },
+
   module: {
+
     rules: [
       {
         test: /\.ts/,
