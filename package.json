@@ -1,0 +1,10 @@
+{
+  "name": "ditto",
+  "version": "0.1.0",
+  "main": "-",
+  "repository": "git+https://github.com/abinavseelan/ditto.git",
+  "author": "Abinav Seelan <abinav.n.seelan@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "workspaces": ["packages/exeggcutor"]
+}

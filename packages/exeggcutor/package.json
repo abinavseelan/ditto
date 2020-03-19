@@ -1,0 +1,40 @@
+{
+  "name": "exeggcutor",
+  "version": "0.1.0",
+  "main": "-",
+  "repository": "-",
+  "author": "Abinav Seelan <abinav.n.seelan@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "start:dev": "NODE_ENV=development webpack --config webpack.config.js --watch --progress"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.3",
+    "@types/node": "^13.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "nodemon-webpack-plugin": "^4.3.1",
+    "pre-commit": "^1.2.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  }
+}

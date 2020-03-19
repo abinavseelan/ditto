@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "esNext",
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": [
+      "es6",
+      "es7"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "moduleResolution": "node",
+  },
+  "include": [
+    "./**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "typings/globals"
+  ],
+}
