@@ -1,23 +1,23 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "esNext",
+    "module": "commonjs",
+    "target": "es2018",
     "noImplicitReturns": true,
-    "skipLibCheck": true,
     "strictNullChecks": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "lib": [
       "es6",
-      "es7"
+      "es7",
     ],
     "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "baseUrl": "./",
     "moduleResolution": "node",
+    "allowJs": true,
+    "rootDir": "src",
+    "outDir": "../../dist/exeggutor"
   },
-  "include": [
-    "./**/*",
-  ],
   "exclude": [
     "node_modules",
     "typings/globals"

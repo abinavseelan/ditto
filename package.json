@@ -6,5 +6,5 @@
   "author": "Abinav Seelan <abinav.n.seelan@gmail.com>",
   "license": "GPL-3.0-or-later",
   "private": true,
-  "workspaces": ["packages/exeggcutor"]
+  "workspaces": ["packages/exeggutor"]
 }
