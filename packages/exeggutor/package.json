@@ -6,7 +6,7 @@
   "author": "Abinav Seelan <abinav.n.seelan@gmail.com>",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "start:dev": "tsc-watch  --onSuccess 'node ../../dist/exeggcutor'"
+    "start:dev": "tsc-watch  --onSuccess 'node ../../dist/exeggutor'"
   },
   "devDependencies": {
     "@types/bull": "^3.12.1",
