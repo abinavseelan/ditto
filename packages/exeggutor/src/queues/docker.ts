@@ -52,6 +52,4 @@ class DockerBuildQueue extends BaseQueue<DockerJobEntity> {
   }
 }
  
-const dockerBuildQueue = new DockerBuildQueue();
-
-export default dockerBuildQueue;
+export default new DockerBuildQueue();

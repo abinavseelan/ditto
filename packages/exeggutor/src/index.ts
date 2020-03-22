@@ -6,7 +6,7 @@ import { validate, ValidationError } from 'express-validation';
 import { dockerBuildPayloadValidation } from './validations';
 import { DEFAULTS } from './constants';
 
-import { DockerBuildQueue } from './queues';
+import { DockerBuildQueue, CleanupQueue } from './queues';
 
 const app = express();
 
@@ -61,4 +61,11 @@ const __PORT__ = 1337;
 
 app.listen(__PORT__, () => {
   console.log(`Server running on port ${__PORT__}`);
+  CleanupQueue.add({}, {
+    repeat: {
+      // Create a job for every 5 minutes
+      // TODO: Make this configuration dependent
+      cron: '*/1 * * * *'
+    },
+  })
 });

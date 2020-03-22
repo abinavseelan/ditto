@@ -9,12 +9,12 @@ class BaseQueue<T> {
     this.queue.process(cb);
   }
 
-  async add(job: T) {
-    const jobId = await this.queue.add(job);
+  async add(job: T, options?: Queue.JobOptions) {
+    const jobId = await this.queue.add(job, options);
     return jobId;
   }
 
-  async getJob(jobId: string) {
+  async getJob(jobId: Queue.JobId) {
     const jobDetails = await this.queue.getJob(jobId);
 
     return jobDetails;
