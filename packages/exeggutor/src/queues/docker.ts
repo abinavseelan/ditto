@@ -1,4 +1,5 @@
 import { exec } from 'child_process';
+import { createHash } from 'crypto';
 import { promisify } from 'util';
 
 import BaseQueue from './queue';
@@ -52,12 +53,15 @@ class DockerBuildQueue extends BaseQueue<DockerJobEntity> {
 
         console.log(`==== Container ID for ${image}: ${containerId}`);
 
-        await Redis.hset('pods', image, JSON.stringify({
-          createdAt: Date.now(),
-          lastAccess: Date.now(),
-          containerId,
-          port: assignedPort,
-        })),
+        await Promise.all([
+          Redis.hset('pods', image, JSON.stringify({
+            createdAt: Date.now(),
+            lastAccess: Date.now(),
+            containerId,
+            port: assignedPort,
+          })),
+          Redis.hset('urlMaps', createHash('md5').update(image).digest('hex'), image),
+        ]);
 
         job.progress(100);
       } catch (err) {

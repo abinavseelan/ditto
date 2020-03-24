@@ -1,0 +1,28 @@
+{
+  "name": "proxy",
+  "version": "0.1.0",
+  "main": "-",
+  "author": "Abinav Seelan <abinav.n.seelan@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "start:dev": "tsc-watch  --onSuccess 'node ../../dist/proxy'"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.0",
+    "ioredis": "^4.16.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.3",
+    "@types/node": "^13.9.3",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.9",
+    "pre-commit": "^1.2.2",
+    "tsc-watch": "^4.2.3",
+    "typescript": "^3.8.3"
+  }
+}

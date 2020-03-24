@@ -7,6 +7,7 @@ import { dockerBuildPayloadValidation } from './validations';
 import { DEFAULTS } from './constants';
 
 import { DockerBuildQueue, CleanupQueue } from './queues';
+import { Redis } from './connectors';
 
 const app = express();
 
