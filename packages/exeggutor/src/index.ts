@@ -61,6 +61,7 @@ const __PORT__ = 1337;
 
 app.listen(__PORT__, () => {
   console.log(`Server running on port ${__PORT__}`);
+
   CleanupQueue.add({}, {
     repeat: {
       // Create a job for every 5 minutes
