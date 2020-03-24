@@ -48,7 +48,7 @@ class Port {
       if (data) {
         // Image already present
         const podMeta = JSON.parse(data);
-        await this.reclaim(podMeta.containerId, image);
+        await this.reclaim(podMeta.containerId, image, podMeta.port);
         return podMeta.port;
       }
 
@@ -78,15 +78,16 @@ class Port {
         }
       }
 
-      await this.reclaim(lruPod.containerId, podList[lruIndex]);
+      await this.reclaim(lruPod.containerId, podList[lruIndex], lruPod.port);
       return lruPod.port;
     } catch (err) {
       return null;
     }
   }
 
-  async reclaim(containerId: string, image: string) {
+  async reclaim(containerId: string, image: string, port: number) {
     try {
+      console.log(`=== Reclaiming ${containerId} ${image}`);
       const stopResult = await execPromise(`docker container stop ${containerId}`);
       
       if (stopResult.stderr) {
@@ -96,6 +97,7 @@ class Port {
       // Removal need not throw if it errors out as the cleanup job will remove this.
       await execPromise(`docker container rm ${containerId}`);
       await Redis.hdel('pods', image);
+      this.updatePort(port, null);
     } catch(err) {
       console.log("Port -> clear -> err", err)
     }

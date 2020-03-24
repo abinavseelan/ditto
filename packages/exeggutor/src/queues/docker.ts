@@ -4,6 +4,7 @@ import { promisify } from 'util';
 import BaseQueue from './queue';
 import { DockerJobEntity } from '../types';
 import { Redis, Port } from '../connectors';
+import { CleanupQueue } from '.';
 
 const execPromise = promisify(exec);
 
@@ -17,6 +18,9 @@ class DockerBuildQueue extends BaseQueue<DockerJobEntity> {
        *    2.2 If new image, drop last used image and run
        */
       let assignedPort;
+      let containerId;
+      let image;
+
       try {
         const {
           data: {
@@ -25,7 +29,7 @@ class DockerBuildQueue extends BaseQueue<DockerJobEntity> {
           }
         } = job;
 
-        const image = `${registry?.endpoint}/${registry?.imageName}:${registry?.tag}`;
+        image = `${registry?.endpoint}/${registry?.imageName}:${registry?.tag}`;
   
         console.log(`=== Pulling Docker Image: ${image}`);
 
@@ -35,15 +39,16 @@ class DockerBuildQueue extends BaseQueue<DockerJobEntity> {
         }
         job.progress(50);
   
+        assignedPort = await Port.assign(image);
         console.log(`=== Running Docker Image: ${image}`);
 
-        const dockerRunResult = await execPromise(`docker container run -p 1338:${run.expose} -d ${image}`);
+        const dockerRunResult = await execPromise(`docker container run -p ${assignedPort}:${run.expose} -d ${image}`);
         if (dockerRunResult.stderr) {
           throw new Error(`Could not run docker image: ${dockerRunResult.stderr}`);
         }
         job.progress(90);
   
-        const containerId = dockerRunResult.stdout;
+        containerId = dockerRunResult.stdout;
 
         console.log(`==== Container ID for ${image}: ${containerId}`);
 
@@ -56,6 +61,10 @@ class DockerBuildQueue extends BaseQueue<DockerJobEntity> {
 
         job.progress(100);
       } catch (err) {
+        if (containerId) {
+          Port.reclaim(containerId, image, assignedPort);
+        }
+        CleanupQueue.add({});
         console.log("DockerBuildQueue -> constructor -> err", err)
       }
     });

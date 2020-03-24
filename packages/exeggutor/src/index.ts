@@ -66,7 +66,7 @@ app.listen(__PORT__, () => {
     repeat: {
       // Create a job for every 5 minutes
       // TODO: Make this configuration dependent
-      cron: '*/1 * * * *'
+      cron: '*/5 * * * *'
     },
   })
 });
