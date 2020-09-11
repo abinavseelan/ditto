@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "http-proxy": "^1.18.0",
+    "http-proxy": "^1.18.1",
     "ioredis": "^4.16.0",
     "morgan": "^1.10.0"
   },
