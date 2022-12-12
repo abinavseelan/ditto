@@ -8,7 +8,7 @@
     "start:dev": "tsc-watch  --onSuccess 'node ../../dist/proxy'"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "http-proxy": "^1.18.0",
     "ioredis": "^4.16.0",
     "morgan": "^1.10.0"
